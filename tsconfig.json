@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "strict": true, // Outras opções de verificação
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "vite-plugin-eslint": ["node_modules/vite-plugin-eslint/dist/index.d.ts"]
+    }
+  }
+}
