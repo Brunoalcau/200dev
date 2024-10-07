@@ -1,3 +1,4 @@
+import { DataTable } from '@/components/lib/data-table';
 import { ContentLayout } from '@/components/panel/content-layout';
 import {
   Breadcrumb,
@@ -10,7 +11,29 @@ import {
 import { Card } from '@/components/ui/card';
 import { userService } from '@/services/user.service';
 import { useQuery } from '@tanstack/react-query';
+import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
+
+export type User = {
+  id: string;
+  item: string;
+  price: string;
+};
+
+export const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: 'id',
+    header: 'Id',
+  },
+  {
+    accessorKey: 'item',
+    header: 'Item',
+  },
+  {
+    accessorKey: 'price',
+    header: 'Preço',
+  },
+];
 
 export const User = () => {
   const info = useQuery({
@@ -33,7 +56,12 @@ export const User = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Card className="rounded-lg border-none p-4 mt-6"></Card>
+      <Card className="rounded-lg border-none p-4 mt-6">
+        <DataTable
+          columns={columns}
+          data={info?.data?.data.data.purchases || []}
+        />
+      </Card>
     </ContentLayout>
   );
 };

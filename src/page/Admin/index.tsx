@@ -14,15 +14,13 @@ import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
+export type Admin = {
   id: string;
   status: 'Pending' | 'Completed';
   title: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Admin>[] = [
   {
     accessorKey: 'status',
     header: 'Id',
